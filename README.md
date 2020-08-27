@@ -18,6 +18,8 @@ The source code of this project is made free to every developers out there.
 So you can reconfigure it, add your own filters, change the UI etc
 And also feel free to suggest and commit :)
 
+For your easy understanding of the project i've seperated the html, css, and javascript code sections from the main project
+
 # Credits
 Thank you Duke University for providing the knowledge and liabrary support for making this
 project possible.
