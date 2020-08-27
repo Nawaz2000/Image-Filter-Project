@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+canvas{
+  margin-left:5px;
+  margin-top:20px;
+  width:400px;
+  height:300px;
+  border:solid red 2px;
+  border-radius:10px;
+}
+
+body{
+  background-color:aquamarine;
+}
+
+.head{
+  border-bottom:2px solid green;
+  padding-left:10px;
+}
+
+.contrastIncrease{
+  filter:contrast(150%);
+}
+
+.contrastDecrease{
+  filter:contrast(70%);
+}
+
+.brightInc{
+  filter:brightness(150%);
+}
+
+.brightDec{
+  filter:brightness(70%);
+}
+
+.blur{
+  filter:blur(3px);
+}
+
+.invertNow{
+  filter:invert(100%)
+}
+</style>
+</head>
+
+<body>
+
+<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
+</script>
+
+<div class="head"><h1>Apply filters to your image <i>(Nawaz's mini project)</i></h1></div>
+
+<canvas id="can">
+</canvas>
+<canvas id="can2">
+</canvas>
+
+<p><i>*Use 'Right click->Save image as' to download</i></P>
+
+<p>
+  <b>Upload image:</b>
+  <input type="file" id="Input" accept="image/*" onchange="upload()">
+</p>
+
+<p><h2><u>Choose your filter</u></h2><p>
+  
+<p>
+  <input type="button" value="Grayscale" id="gray" onclick="gray()">
+  
+  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+  
+  <input type="button" value="Tri stripes" id="Tri" onclick="Tri()">
+  
+  &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+  
+  <input type="button" value="ExceptBlue" id="EBlue" onclick="EBlue()">
+</p>
+
+<p>
+  <input type="button" value="Ravishing red" id="rFilter" onclick="redFilter()">
+  
+  &emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+  
+ <input type="button" value="Cold Memory" onclick="cMemory()">
+  
+  &emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+  
+ <input type="button" value="Witch's Olive" onclick="wOlive()">
+</p>
+
+<p><h2><u>Adjustments</u></h2><p>
+  
+<p>
+  <input type="button" value="Contrast(150%)" onclick="mContrastIncrease()">
+  
+&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+  
+  <input type="button" value="Contrast(70%)" onclick="mContrastDecrease()">
+  
+</p>
+
+<p>
+  <input type="button" value="Brightness(150%)" onclick="brightInc()">
+  
+&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+  
+  <input type="button" value="Brightness(70%)" onclick="brightDec()">
+  
+</p>
+
+
+<p><h2><u>Not so special Effecs</u></h2><p>
+  
+  
+<p>
+  <input type="button" value="Image blurrr" onclick="blurrr()">
+  
+  &emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+  
+  <input type="button" value="Invert_It" onclick="invert()">
+  
+</p>
+
+<p><h2>Don't like the UI background color? CHANGE IT...</h2><p>
+  
+ <P>
+   Pick your COLOR:
+   <input type="color" value="#7fffd4" id="clr" onchange="doColor()">
+   
+   &emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+  
+  <input type="button" value="Reset Color" onclick="resetColor()">
+ </p>
+
+
+<script>
+var uImage, file; 
+var imgCanvas=document.getElementById("can");
+var imgCanvas2=document.getElementById("can2");
+
+
+
+
+
+function copyImage(){
+  var img= new SimpleImage(uImage.getWidth(), uImage.getHeight());
+  
+  for (var i of uImage.values()){
+    var x = i.getX();
+    var y = i.getY();
+    img.setPixel(x,y,i);
+  }
+  return img;
+}
+
+
+
+
+
+function upload(){
+  clearCanvas(imgCanvas);
+  clearCanvas(imgCanvas2);
+  file=document.getElementById("Input");
+  uImage=new SimpleImage(file);
+  
+  uImage.drawTo(imgCanvas);
+}
+
+
+
+
+
+function gray(){
+  clearCanvas(imgCanvas2);
+  var img=copyImage();
+  
+  imgCanvas=document.getElementById("can");
+  
+  for (var pixel of img.values())
+    {
+      var avg=(pixel.getRed()+pixel.getGreen()+pixel.getBlue())/3;
+      pixel.setRed(avg);
+      pixel.setGreen(avg);
+      pixel.setBlue(avg);
+    }
+  img.drawTo(imgCanvas2);
+}
+
+
+
+
+
+
+function Tri(){
+  clearCanvas(imgCanvas2);
+  var img=copyImage();
+  var w = img.getWidth();
+for (var px of img.values())
+{
+    var xCoor = px.getX();
+    if (xCoor < w/3)
+    {
+        px.setRed(255);
+    }
+    else if ( xCoor >= w/3 && xCoor < (w/3)*2)
+    {
+       px.setGreen(255);
+    }
+    else
+    {
+        px.setBlue(255);
+    }
+}
+  img.drawTo(imgCanvas2);
+}
+
+
+
+
+
+
+
+function EBlue(){
+  clearCanvas(imgCanvas2);
+  var img=copyImage();
+  for(var px of img.values())
+    {
+      px.setBlue(150);
+    }
+  img.drawTo(imgCanvas2);
+}
+
+
+
+
+
+
+function cMemory(){
+  clearCanvas(imgCanvas2);
+  var img=copyImage();
+  for(var px of img.values())
+    {
+      px.setRed(50);
+    }
+  img.drawTo(imgCanvas2);
+}
+
+
+
+
+
+
+
+function clearCanvas(canvas){
+  var ctx=canvas.getContext("2d");
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+}
+
+
+
+
+
+
+function redFilter(){
+  clearCanvas(imgCanvas2);
+  var img=copyImage();
+  for (var px of img.values()){
+    var avg = (px.getRed()+px.getGreen()+px.getBlue())/3;
+    
+    if (avg<128){
+      px.setRed(2*avg);
+      px.setGreen(0);
+      px.setBlue(0);
+    }
+    else{
+      px.setRed(255);
+      px.setGreen(2*avg-255);
+      px.setBlue(2*avg-255);
+    }
+  }
+  img.drawTo(imgCanvas2);
+}
+
+
+
+
+
+function wOlive(){
+  clearCanvas(imgCanvas2);
+  var img=copyImage();
+  for(var px of img.values())
+    {
+      px.setGreen(px.getGreen()+70);
+    }
+  img.drawTo(imgCanvas2);
+}
+
+
+
+
+
+function mContrastIncrease(){
+  clearCanvas(imgCanvas2);
+  var img=copyImage();
+  var imgCan2=document.getElementById("can2");
+  imgCan2.className="contrastIncrease";
+  img.drawTo(imgCanvas2);
+}
+
+
+
+
+
+function mContrastDecrease(){
+  clearCanvas(imgCanvas2);
+  var img=copyImage();
+  var imgCan2=document.getElementById("can2");
+  imgCan2.className="contrastDecrease";
+  img.drawTo(imgCanvas2);
+}
+
+
+
+
+
+
+function brightInc(){
+  clearCanvas(imgCanvas2);
+  var img=copyImage();
+  var imgCan2=document.getElementById("can2");
+  imgCan2.className="brightInc";
+  img.drawTo(imgCanvas2);
+}
+
+
+
+
+function brightDec(){
+  clearCanvas(imgCanvas2);
+  var img=copyImage();
+  var imgCan2=document.getElementById("can2");
+  imgCan2.className="brightDec";
+  img.drawTo(imgCanvas2);
+}
+
+
+
+
+
+function blurrr(){
+  clearCanvas(imgCanvas2);
+  var img=copyImage();
+  var imgCan2=document.getElementById("can2");
+  imgCan2.className="blur";
+  img.drawTo(imgCanvas2);
+}
+
+
+
+
+function invert(){
+  clearCanvas(imgCanvas2);
+  var img=copyImage();
+  var imgCan2=document.getElementById("can2");
+  imgCan2.className="invertNow";
+  img.drawTo(imgCanvas2);
+}
+
+
+
+
+
+
+function doColor(){
+  var colorInput=document.getElementById("clr");
+  document.body.style.backgroundColor=colorInput.value;
+}
+
+
+
+
+
+function resetColor(){
+  document.body.style.backgroundColor="aquamarine";
+}
+</script>
+
+</body>
+</html>
