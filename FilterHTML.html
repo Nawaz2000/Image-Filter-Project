@@ -1,0 +1,88 @@
+
+
+<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
+</script>
+
+<div class="head"><h1>Apply filters to your image</h1></div>
+
+<canvas id="can">
+</canvas>
+<canvas id="can2">
+</canvas>
+
+<p><i>*Use 'Right click->Save image as' to download</i></P>
+
+<p>
+  <b>Upload image:</b>
+  <input type="file" id="Input" accept="image/*" onchange="upload()">
+</p>
+
+<p><h2><u>Choose your filter</u></h2><p>
+  
+<p>
+  <input type="button" value="Grayscale" id="gray" onclick="gray()">
+  
+  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+  
+  <input type="button" value="Tri stripes" id="Tri" onclick="Tri()">
+  
+  &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+  
+  <input type="button" value="ExceptBlue" id="EBlue" onclick="EBlue()">
+</p>
+
+<p>
+  <input type="button" value="Ravishing red" id="rFilter" onclick="redFilter()">
+  
+  &emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+  
+ <input type="button" value="Cold Memory" onclick="cMemory()">
+  
+  &emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+  
+ <input type="button" value="Witch's Olive" onclick="wOlive()">
+</p>
+
+<p><h2><u>Adjustments</u></h2><p>
+  
+<p>
+  <input type="button" value="Contrast(150%)" onclick="mContrastIncrease()">
+  
+&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+  
+  <input type="button" value="Contrast(70%)" onclick="mContrastDecrease()">
+  
+</p>
+
+<p>
+  <input type="button" value="Brightness(150%)" onclick="brightInc()">
+  
+&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+  
+  <input type="button" value="Brightness(70%)" onclick="brightDec()">
+  
+</p>
+
+
+<p><h2><u>Not so special Effecs</u></h2><p>
+  
+  
+<p>
+  <input type="button" value="Image blurrr" onclick="blurrr()">
+  
+  &emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+  
+  <input type="button" value="Invert_It" onclick="invert()">
+  
+</p>
+
+<p><h2>Don't like the UI background color? CHANGE IT...</h2><p>
+  
+ <P>
+   Pick your COLOR:
+   <input type="color" value="#7fffd4" id="clr" onchange="doColor()">
+   
+   &emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+  
+  <input type="button" value="Reset Color" onclick="resetColor()">
+ </p>
