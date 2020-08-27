@@ -1,0 +1,41 @@
+canvas{
+  margin-left:5px;
+  margin-top:20px;
+  width:400px;
+  height:300px;
+  border:solid red 2px;
+  border-radius:10px;
+}
+
+body{
+  background-color:aquamarine;
+}
+
+.head{
+  border-bottom:2px solid green;
+  padding-left:10px;
+}
+
+.contrastIncrease{
+  filter:contrast(150%);
+}
+
+.contrastDecrease{
+  filter:contrast(70%);
+}
+
+.brightInc{
+  filter:brightness(150%);
+}
+
+.brightDec{
+  filter:brightness(70%);
+}
+
+.blur{
+  filter:blur(3px);
+}
+
+.invertNow{
+  filter:invert(100%)
+}
